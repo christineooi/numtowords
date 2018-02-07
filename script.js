@@ -31,7 +31,7 @@ function numToWords(num){
         wordStr = getOnes(num);
     } else if (strLen === 2){
         wordStr = getTwoDigit(num);
-    } else if(strLen == 3) {
+    } else if(strLen === 3) {
         var firstdigit = numStr.substr(0,1);
         var seconddigit = numStr.substr(1,1);
         var thirddigit = numStr.substr(2,1); 
@@ -43,13 +43,20 @@ function numToWords(num){
         } else {
             wordStr = ones[firstdigit-1] + " hundred " + getTwoDigit(twodigit);
         }
-
+    } else if(strLen === 4){
+        var firstdigit4 = numStr.substr(0,1);
+        var seconddigit4 = numStr.substr(1,1);
+        var thirddigit4 = numStr.substr(2,1); 
+        var fourthdigit4 = numStr.substr(3,1); 
+        if (seconddigit4 === "0" && thirddigit4 === "0" && fourthdigit4 === "0"){
+            wordStr = ones[firstdigit4-1] + " thousand";
+        }
     }
 
     return wordStr;
 }
 
-for (var i = 1; i < 1000; i++){
+for (var i = 1; i <= 1000; i++){
     
     resultStr += i + ": " + numToWords(i) + "<br>";
 }
